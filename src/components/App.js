@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import "./../styles/App.css";
-
+import ShowCity from './ShowCity'
 // Do not alter the states const and values inside it.
 const states = [
   {
@@ -154,8 +154,38 @@ const states = [
   },
 ];
 
+//Const[a,setA]=useState(1)
+/*
+onClick={()=>{
+           if(stat===st.name)
+              setSt(1)
+           else
+           setSt(st.name ) 
+        
+        }} 
+
+        {stat===st.name && <showCity city={st.cities}/>}
+*/
+
 function App() {
-  return <div id="main"></div>;
+  const[stat,setSt]=useState(0)
+  return (<div id="main"> 
+ 
+  {
+    states.map((st,index)=>
+    <div>
+    <li id={"state"+(index+1)} onClick={()=>{
+           if(stat===st.name)
+              setSt(1)
+           else
+           setSt(st.name ) 
+        
+        }}  >{st.name}</li>  
+       {stat===st.name && <ShowCity city={st.cities}/>}
+    </div>
+    )
+  }
+  </div>);
 }
 
 export default App;
